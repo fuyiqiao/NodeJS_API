@@ -1,6 +1,9 @@
 const express = require('express');
 const apiRouter = require('./routes/api');
+const dotenv = require('dotenv');
 const { errorHandler } = require('./middleware/errorHandler');
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());

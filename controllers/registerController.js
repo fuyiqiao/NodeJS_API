@@ -10,7 +10,9 @@ exports.register = async (req, res, next) => {
     }
 
     await Teacher.createIfNotExists(teacher);
-    await Student.createIfNotExists(students);
+    for (student in students) {
+        await Student.createIfNotExists(student);
+    }
     await Registration.register(teacher, students);
 
     res.status(204).end();

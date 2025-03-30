@@ -2,7 +2,7 @@ const pool = require('../config/db');
 
 class Student {
   static async createIfNotExists(email) {
-    await pool.query('INSERT IGNORE INTO students (email) VALUES (?)', [email]);
+    await pool.query('INSERT IGNORE INTO students (email, suspended) VALUES (?, FALSE)', [email]);
   }
 
   static async suspend(email) {

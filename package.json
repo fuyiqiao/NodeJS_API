@@ -2,14 +2,17 @@
   "name": "nodejs_api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "node api.test.js",
+    "setup-db": "node config/db.js" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mysql2": "^3.14.0",
     "routes": "^2.1.0"

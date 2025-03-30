@@ -12,9 +12,9 @@ exports.retrieveForNotifications = async (req, res, next) => {
       .map(email => email.substring(1));
 
     const registeredStudents = await Registration.findStudentsByTeacher(teacher);
-    const validMentionedStudents = await Student.findActiveByEmails(mentionedEmails);
+    const validRegisteredStudents = await Student.findActiveByEmails(registeredStudents);
 
-    const eligibleStudents = [...new Set([...registeredStudents, ...validMentionedStudents])];
+    const eligibleStudents = [...new Set([...mentionedEmails, ...validRegisteredStudents])];
     res.status(200).json({ recipients: eligibleStudents });
   } catch (error) {
     next(error);
